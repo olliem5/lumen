@@ -1,5 +1,6 @@
 package com.olliem5.lumen;
 
+import com.olliem5.lumen.api.module.ModuleManager;
 import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,7 +19,10 @@ public final class Lumen implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		//Do stuff
+		ModuleManager.initialize();
+		log("Modules Initialized!");
+
+		log("Finished Initializing.");
 	}
 
 	public static void log(String message) {
