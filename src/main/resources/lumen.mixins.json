@@ -5,7 +5,8 @@
   "compatibilityLevel": "JAVA_8",
 
   "mixins": [
-    "MixinTitleScreen"
+    "MixinTitleScreen",
+    "MixinClientWorld"
   ],
 
   "injectors": { "defaultRequire": 1 }

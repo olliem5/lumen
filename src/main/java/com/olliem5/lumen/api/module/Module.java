@@ -1,7 +1,7 @@
 package com.olliem5.lumen.api.module;
 
+import com.olliem5.lumen.Lumen;
 import com.olliem5.lumen.api.traits.MinecraftTrait;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * @author olliem5
@@ -9,19 +9,18 @@ import org.jetbrains.annotations.Nullable;
  */
 
 public abstract class Module implements MinecraftTrait {
-    private final String name;
-    private final String description;
-    private final ModuleCategory moduleCategory;
-    private int key;
+    private ModuleManifest getAnnotation() {
+        if (getClass().isAnnotationPresent(ModuleManifest.class)) {
+            return getClass().getAnnotation(ModuleManifest.class);
+        }
+        throw new IllegalStateException("Annotation 'ModuleManifest' not found!");
+    }
+
+    private final String name = getAnnotation().name();
+    private final String description = getAnnotation().description();
+    private final ModuleCategory category = getAnnotation().category();
 
     private boolean enabled = false;
-
-    protected Module(String name, @Nullable String description, ModuleCategory moduleCategory, int key) {
-        this.name = name;
-        this.description = description;
-        this.moduleCategory = moduleCategory;
-        this.key = key;
-    }
 
     public void toggle() {
         enabled = !enabled;
@@ -34,11 +33,11 @@ public abstract class Module implements MinecraftTrait {
     }
 
     public void onEnable() {
-        //register from event bus
+        Lumen.EVENT_HANDLER.register(this);
     }
 
     public void onDisable() {
-        //unregister from event bus
+        Lumen.EVENT_HANDLER.unregister(this);
     }
 
     public String getName() {
@@ -49,16 +48,8 @@ public abstract class Module implements MinecraftTrait {
         return description;
     }
 
-    public ModuleCategory getModuleCategory() {
-        return moduleCategory;
-    }
-
-    public int getKey() {
-        return key;
-    }
-
-    public void setKey(int key) {
-        this.key = key;
+    public ModuleCategory getCategory() {
+        return category;
     }
 
     public boolean isEnabled() {
@@ -68,4 +59,6 @@ public abstract class Module implements MinecraftTrait {
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
+
+    public void onUpdate() {}
 }

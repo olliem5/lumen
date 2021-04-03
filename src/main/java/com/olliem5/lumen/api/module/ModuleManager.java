@@ -1,7 +1,11 @@
 package com.olliem5.lumen.api.module;
 
+import com.olliem5.lumen.api.traits.MinecraftTrait;
+import com.olliem5.lumen.impl.events.UpdateEvent;
+import com.olliem5.lumen.impl.modules.TestModule;
+import com.olliem5.pace.annotation.PaceHandler;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * @author olliem5
@@ -12,10 +16,8 @@ public final class ModuleManager {
     public static final ArrayList<Module> modules = new ArrayList<>();
 
     public static void initialize() {
-        modules.addAll(Arrays.asList(
-                //Add modules here
-        ));
-
+        //modules.addAll(Arrays.asList(...));
+        modules.add(new TestModule());
         modules.sort(ModuleManager::alphabetize);
     }
 
@@ -28,4 +30,9 @@ public final class ModuleManager {
     }
 
     //TODO: Class lookup
+
+    @PaceHandler
+    public void onUpdate(UpdateEvent event) {
+        modules.forEach(Module::onUpdate);
+    }
 }

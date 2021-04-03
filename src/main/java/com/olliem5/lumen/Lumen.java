@@ -1,6 +1,7 @@
 package com.olliem5.lumen;
 
 import com.olliem5.lumen.api.module.ModuleManager;
+import com.olliem5.pace.handler.EventHandler;
 import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,6 +17,7 @@ public final class Lumen implements ModInitializer {
 	public static final String NAME_VERSION = NAME + " " + VERSION;
 
 	public static final Logger LOGGER = LogManager.getLogger(NAME_VERSION);
+	public static final EventHandler EVENT_HANDLER = new EventHandler();
 
 	@Override
 	public void onInitialize() {

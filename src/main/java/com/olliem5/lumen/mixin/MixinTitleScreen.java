@@ -12,10 +12,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * @since 1.0
  */
 
-@Mixin(TitleScreen.class)
+@Mixin(value = TitleScreen.class)
 public final class MixinTitleScreen {
-	@Inject(at = @At("HEAD"), method = "init()V")
-	private void init(CallbackInfo info) {
+	@Inject(at = @At(value = "HEAD"), method = "init()V")
+	private void init(CallbackInfo callbackInfo) {
 		Lumen.log("Mixin moment");
 	}
 }
