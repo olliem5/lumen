@@ -61,4 +61,6 @@ public abstract class Module implements MinecraftTrait {
     }
 
     public void onUpdate() {}
+
+    public void onRender() {}
 }

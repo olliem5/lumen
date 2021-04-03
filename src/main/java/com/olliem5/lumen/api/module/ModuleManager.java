@@ -2,6 +2,7 @@ package com.olliem5.lumen.api.module;
 
 import com.olliem5.lumen.api.traits.MinecraftTrait;
 import com.olliem5.lumen.impl.events.UpdateEvent;
+import com.olliem5.lumen.impl.events.WorldRenderEvent;
 import com.olliem5.lumen.impl.modules.TestModule;
 import com.olliem5.pace.annotation.PaceHandler;
 
@@ -34,5 +35,10 @@ public final class ModuleManager {
     @PaceHandler
     public void onUpdate(UpdateEvent event) {
         modules.forEach(Module::onUpdate);
+    }
+
+    @PaceHandler
+    public void onWorldRender(WorldRenderEvent event) {
+        modules.forEach(Module::onRender);
     }
 }

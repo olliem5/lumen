@@ -22,6 +22,7 @@ public final class Lumen implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModuleManager.initialize();
+		EVENT_HANDLER.register(new ModuleManager());
 		log("Modules Initialized!");
 
 		log("Finished Initializing.");

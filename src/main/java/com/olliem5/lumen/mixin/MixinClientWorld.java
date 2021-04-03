@@ -15,10 +15,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(value = ClientWorld.class)
 public final class MixinClientWorld {
-    @Inject(method = "tickEntities", at = @At(value = "HEAD"), cancellable = true)
-    public void tickEntities(CallbackInfo callbackInfo) {
+    @Inject(method = "tickEntities", at = @At(value = "HEAD"))
+    private void tickEntities(CallbackInfo callbackInfo) {
         UpdateEvent updateEvent = new UpdateEvent();
         Lumen.EVENT_HANDLER.dispatchPaceEvent(updateEvent);
-        System.out.println("Tick event");
     }
 }

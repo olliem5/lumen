@@ -18,6 +18,7 @@ public final class TestModule extends Module {
     @Override
     public void onUpdate() {
         if (mc.player == null) return;
-        mc.player.sendChatMessage("Yay! Update event working....");
+        //Gets kicked for spamming, but it works
+        //mc.player.sendChatMessage("Yay! Update event working....");
     }
 }
