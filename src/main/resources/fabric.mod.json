@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "lumen",
+  "version": "1.0",
+  "name": "Lumen",
+  "description": "Lumen Client for Minecraft 1.16.5.",
+  "authors": ["olliem5"],
+  "contact": { "homepage": "https://olliem5.com/" },
+  "license": "None",
+  "icon": "assets/lumen/icon.png",
+  "environment": "*",
+  "entrypoints": { "main": ["com.olliem5.lumen.Lumen"] },
+  "mixins": ["lumen.mixins.json"],
+  "depends": { "fabricloader": ">=0.7.4", "fabric": "*", "minecraft": "1.16.x" },
+  "suggests": { "another-mod": "*" }
+}
