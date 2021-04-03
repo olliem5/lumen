@@ -1,6 +1,7 @@
 package com.olliem5.lumen.api.module;
 
 import com.olliem5.lumen.api.traits.MinecraftTrait;
+import com.olliem5.lumen.impl.events.KeyPressEvent;
 import com.olliem5.lumen.impl.events.UpdateEvent;
 import com.olliem5.lumen.impl.events.WorldRenderEvent;
 import com.olliem5.lumen.impl.modules.TestModule;
@@ -40,5 +41,15 @@ public final class ModuleManager {
     @PaceHandler
     public void onWorldRender(WorldRenderEvent event) {
         modules.forEach(Module::onRender);
+    }
+
+    //TODO: Fix it sending twice per key press
+    @PaceHandler
+    public void onKeyPress(KeyPressEvent event) {
+        for (Module module : modules) {
+            if (module.getKey() == event.getKey()) {
+                module.toggle();
+            }
+        }
     }
 }

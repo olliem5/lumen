@@ -7,4 +7,4 @@ import com.olliem5.pace.event.Event;
  * @since 1.0
  */
 
-public class WorldRenderEvent extends Event {}
+public final class WorldRenderEvent extends Event {}

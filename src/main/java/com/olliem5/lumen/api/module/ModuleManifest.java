@@ -13,4 +13,5 @@ public @interface ModuleManifest {
     String name();
     String description() default "No description provided!";
     ModuleCategory category();
+    int key() default -1;
 }

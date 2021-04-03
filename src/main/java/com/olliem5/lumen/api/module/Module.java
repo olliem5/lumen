@@ -19,6 +19,7 @@ public abstract class Module implements MinecraftTrait {
     private final String name = getAnnotation().name();
     private final String description = getAnnotation().description();
     private final ModuleCategory category = getAnnotation().category();
+    private int key = getAnnotation().key();
 
     private boolean enabled = false;
 
@@ -58,6 +59,14 @@ public abstract class Module implements MinecraftTrait {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public int getKey() {
+        return key;
+    }
+
+    public void setKey(int key) {
+        this.key = key;
     }
 
     public void onUpdate() {}
