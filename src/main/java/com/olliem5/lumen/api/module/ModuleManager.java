@@ -1,6 +1,5 @@
 package com.olliem5.lumen.api.module;
 
-import com.olliem5.lumen.api.traits.MinecraftTrait;
 import com.olliem5.lumen.impl.events.KeyPressEvent;
 import com.olliem5.lumen.impl.events.UpdateEvent;
 import com.olliem5.lumen.impl.events.WorldRenderEvent;

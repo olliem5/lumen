@@ -1,7 +1,11 @@
 package com.olliem5.lumen.api.module;
 
 import com.olliem5.lumen.Lumen;
+import com.olliem5.lumen.api.setting.Setting;
 import com.olliem5.lumen.api.traits.MinecraftTrait;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * @author olliem5
@@ -20,6 +24,8 @@ public abstract class Module implements MinecraftTrait {
     private final String description = getAnnotation().description();
     private final ModuleCategory category = getAnnotation().category();
     private int key = getAnnotation().key();
+
+    public final ArrayList<Setting<?>> settings = new ArrayList<>();
 
     private boolean enabled = false;
 
@@ -67,6 +73,14 @@ public abstract class Module implements MinecraftTrait {
 
     public void setKey(int key) {
         this.key = key;
+    }
+
+    public ArrayList<Setting<?>> getSettings() {
+        return settings;
+    }
+
+    public void addSettings(Setting<?>... settings) {
+        this.settings.addAll(Arrays.asList(settings));
     }
 
     public void onUpdate() {}
