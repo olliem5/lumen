@@ -18,12 +18,13 @@ public final class GUI extends Module {
     public void onEnable() {
         if (isntNullSafe()) return;
         mc.openScreen(new MainScreen());
-        mc.player.sendChatMessage("Opened GUI!");
+        mc.player.sendChatMessage("Enabled module!");
+        this.toggle();
     }
 
     @Override
     public void onDisable() {
         if (isntNullSafe()) return;
-        mc.player.sendChatMessage("Closed GUI!");
+        mc.player.sendChatMessage("Disabled module!");
     }
 }

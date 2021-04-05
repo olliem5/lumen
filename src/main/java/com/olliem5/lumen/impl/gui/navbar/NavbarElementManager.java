@@ -9,6 +9,7 @@ import java.util.Arrays;
 
 /**
  * @author olliem5
+ * @since 1.0
  */
 
 public final class NavbarElementManager {

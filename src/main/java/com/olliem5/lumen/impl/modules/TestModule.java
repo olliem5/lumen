@@ -24,7 +24,7 @@ public final class TestModule extends Module {
     public static final Setting<Double> doubleSetting = new Setting<>("Double Setting", "This is a double setting", 0.0, 1.0, 2.0, 1);
     public static final Setting<Float> floatSetting = new Setting<>("Float Setting", "This is a float setting", 0.0f, 1.0f, 2.0f, 1);
 
-    //TODO: Custom keybind setting, (maybe) custom block render setting w/ custom GUI
+    //TODO: Custom keybind setting, (maybe) custom block render setting w/ custom GUI, long setting for timers (maybe cool clock gui...?)
 
     public TestModule() {
         this.addSettings(

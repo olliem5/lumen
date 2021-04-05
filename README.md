@@ -1,5 +1,11 @@
 # Lumen
-- Fabric utility mod for 1.16.5.
+- Minecraft 'Utility Mod' for 1.16.5 anarchy servers.
 
-### TODO:
-- everything
+### Base Roadmap
+#### Systems
+- Module system - DONE
+- Command system
+- HUD system
+
+#### Other
+- GUI - WIP
