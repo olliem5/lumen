@@ -1,6 +1,7 @@
 package com.olliem5.lumen.api.traits;
 
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.font.TextRenderer;
 
 /**
  * @author olliem5
@@ -9,4 +10,5 @@ import net.minecraft.client.MinecraftClient;
 
 public interface MinecraftTrait {
     MinecraftClient mc = MinecraftClient.getInstance();
+    TextRenderer textRenderer = mc.textRenderer;
 }

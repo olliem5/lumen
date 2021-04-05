@@ -1,11 +1,9 @@
 package com.olliem5.lumen.impl.gui;
 
-import com.olliem5.lumen.api.util.ShapeRenderer;
+import com.olliem5.lumen.impl.gui.navbar.Navbar;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.LiteralText;
-
-import java.awt.*;
 
 /**
  * @author olliem5
@@ -19,7 +17,7 @@ public final class MainScreen extends Screen {
 
     @Override
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        ShapeRenderer.drawSolidRectangle(2, 2, 100, 100, new Color(100, 25, 25, 100));
+        Navbar navbar = new Navbar(matrices, mouseX, mouseY, delta);
     }
 
     @Override
