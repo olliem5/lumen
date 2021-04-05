@@ -1,7 +1,7 @@
 package com.olliem5.lumen.impl.gui.navbar.elements;
 
 import com.olliem5.lumen.impl.gui.navbar.NavbarElement;
-import com.olliem5.lumen.impl.gui.windows.console.ConsoleWindow;
+import com.olliem5.lumen.impl.gui.window.windows.ConsoleWindow;
 import net.minecraft.util.Identifier;
 
 /**
@@ -11,6 +11,6 @@ import net.minecraft.util.Identifier;
 
 public final class ConsoleElement extends NavbarElement {
     public ConsoleElement() {
-        super("Modules", new Identifier("lumen", "images/navbar/console.png"), new ConsoleWindow());
+        super("Console", new Identifier("lumen", "images/navbar/console.png"), new ConsoleWindow());
     }
 }

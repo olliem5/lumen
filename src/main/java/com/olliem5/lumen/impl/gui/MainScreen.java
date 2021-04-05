@@ -1,6 +1,8 @@
 package com.olliem5.lumen.impl.gui;
 
 import com.olliem5.lumen.impl.gui.navbar.Navbar;
+import com.olliem5.lumen.impl.gui.window.Window;
+import com.olliem5.lumen.impl.gui.window.WindowManager;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.LiteralText;
@@ -17,7 +19,14 @@ public final class MainScreen extends Screen {
 
     @Override
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        Navbar navbar = new Navbar(matrices, mouseX, mouseY, delta);
+        Navbar navbar = new Navbar();
+        navbar.render(matrices, mouseX, mouseY, delta);
+
+        for (Window window : WindowManager.getWindows()) {
+            if (window.isVisible()) {
+                window.render(matrices, mouseX, mouseY, delta);
+            }
+        }
     }
 
     @Override

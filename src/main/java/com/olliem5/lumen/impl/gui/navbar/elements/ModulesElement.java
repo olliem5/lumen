@@ -1,7 +1,7 @@
 package com.olliem5.lumen.impl.gui.navbar.elements;
 
 import com.olliem5.lumen.impl.gui.navbar.NavbarElement;
-import com.olliem5.lumen.impl.gui.windows.modules.ModuleWindow;
+import com.olliem5.lumen.impl.gui.window.windows.ModuleWindow;
 import net.minecraft.util.Identifier;
 
 /**

@@ -1,7 +1,7 @@
 package com.olliem5.lumen.impl.gui.navbar;
 
 import com.olliem5.lumen.api.traits.MinecraftTrait;
-import com.olliem5.lumen.impl.gui.windows.Window;
+import com.olliem5.lumen.impl.gui.window.Window;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
