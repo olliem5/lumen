@@ -41,7 +41,13 @@ public final class TestModule extends Module {
     @Override
     public void onEnable() {
         if (mc.player == null || mc.world == null) return;
-        mc.player.sendChatMessage("Toggled module!");
+        mc.player.sendChatMessage("Enabled module!");
+    }
+
+    @Override
+    public void onDisable() {
+        if (mc.player == null || mc.world == null) return;
+        mc.player.sendChatMessage("Disabled module!");
     }
 
     @Override

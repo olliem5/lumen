@@ -3,10 +3,15 @@ package com.olliem5.lumen.mixin;
 import com.olliem5.lumen.Lumen;
 import com.olliem5.lumen.impl.events.KeyPressEvent;
 import net.minecraft.client.Keyboard;
+import net.minecraft.client.MinecraftClient;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import static org.lwjgl.glfw.GLFW.*;
 
 /**
  * @author olliem5
@@ -15,11 +20,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(value = Keyboard.class)
 public final class MixinKeyboard {
-    @Inject(method = "onKey", at = @At(value = "INVOKE", target = "net/minecraft/client/util/InputUtil.isKeyPressed(JI)Z"))
+    @Inject(method = "onKey", at = @At(value = "HEAD"))
     private void onKey(long window, int key, int scancode, int i, int j, CallbackInfo callbackInfo) {
-        if (key != -1) {
-            KeyPressEvent keyPressEvent = new KeyPressEvent(key);
-            Lumen.EVENT_HANDLER.dispatchPaceEvent(keyPressEvent);
+        if (key != GLFW_KEY_UNKNOWN) {
+            //if (minecraftClient.currentScreen instanceof ClickGUI)
+            if (i != GLFW_RELEASE) {
+                KeyPressEvent keyPressEvent = new KeyPressEvent(key);
+                Lumen.EVENT_HANDLER.dispatchPaceEvent(keyPressEvent);
+            }
         }
     }
 }
