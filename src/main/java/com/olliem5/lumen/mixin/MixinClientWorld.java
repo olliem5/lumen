@@ -18,6 +18,9 @@ public final class MixinClientWorld {
     @Inject(method = "tickEntities", at = @At(value = "HEAD"))
     private void tickEntities(CallbackInfo callbackInfo) {
         UpdateEvent updateEvent = new UpdateEvent();
-        Lumen.EVENT_HANDLER.dispatchPaceEvent(updateEvent);
+
+        if (!updateEvent.isCancelled()) {
+            Lumen.EVENT_HANDLER.dispatchPaceEvent(updateEvent);
+        }
     }
 }

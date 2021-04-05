@@ -40,19 +40,19 @@ public final class TestModule extends Module {
 
     @Override
     public void onEnable() {
-        if (mc.player == null || mc.world == null) return;
+        if (isntNullSafe()) return;
         mc.player.sendChatMessage("Enabled module!");
     }
 
     @Override
     public void onDisable() {
-        if (mc.player == null || mc.world == null) return;
+        if (isntNullSafe()) return;
         mc.player.sendChatMessage("Disabled module!");
     }
 
     @Override
     public void onUpdate() {
-        if (mc.player == null || mc.world == null) return;
+        if (isntNullSafe()) return;
         //Gets kicked for spamming, but it works
         //mc.player.sendChatMessage("Yay! Update event working....");
     }

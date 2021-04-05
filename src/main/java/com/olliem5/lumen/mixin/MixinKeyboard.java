@@ -3,15 +3,13 @@ package com.olliem5.lumen.mixin;
 import com.olliem5.lumen.Lumen;
 import com.olliem5.lumen.impl.events.KeyPressEvent;
 import net.minecraft.client.Keyboard;
-import net.minecraft.client.MinecraftClient;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import static org.lwjgl.glfw.GLFW.*;
+import static org.lwjgl.glfw.GLFW.GLFW_KEY_UNKNOWN;
+import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
 
 /**
  * @author olliem5
@@ -26,7 +24,10 @@ public final class MixinKeyboard {
             //if (minecraftClient.currentScreen instanceof ClickGUI)
             if (i != GLFW_RELEASE) {
                 KeyPressEvent keyPressEvent = new KeyPressEvent(key);
-                Lumen.EVENT_HANDLER.dispatchPaceEvent(keyPressEvent);
+
+                if (!keyPressEvent.isCancelled()) {
+                    Lumen.EVENT_HANDLER.dispatchPaceEvent(keyPressEvent);
+                }
             }
         }
     }

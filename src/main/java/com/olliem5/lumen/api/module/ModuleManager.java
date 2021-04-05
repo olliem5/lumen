@@ -3,6 +3,7 @@ package com.olliem5.lumen.api.module;
 import com.olliem5.lumen.impl.events.KeyPressEvent;
 import com.olliem5.lumen.impl.events.UpdateEvent;
 import com.olliem5.lumen.impl.events.WorldRenderEvent;
+import com.olliem5.lumen.impl.modules.GUI;
 import com.olliem5.lumen.impl.modules.TestModule;
 import com.olliem5.pace.annotation.PaceHandler;
 
@@ -14,11 +15,12 @@ import java.util.ArrayList;
  */
 
 public final class ModuleManager {
-    public static final ArrayList<Module> modules = new ArrayList<>();
+    private static final ArrayList<Module> modules = new ArrayList<>();
 
     public static void initialize() {
         //modules.addAll(Arrays.asList(...));
         modules.add(new TestModule());
+        modules.add(new GUI());
         modules.sort(ModuleManager::alphabetize);
     }
 
@@ -42,7 +44,6 @@ public final class ModuleManager {
         modules.forEach(Module::onRender);
     }
 
-    //TODO: Fix it sending twice per key press
     @PaceHandler
     public void onKeyPress(KeyPressEvent event) {
         for (Module module : modules) {

@@ -25,7 +25,7 @@ public abstract class Module implements MinecraftTrait {
     private final ModuleCategory category = getAnnotation().category();
     private int key = getAnnotation().key();
 
-    public final ArrayList<Setting<?>> settings = new ArrayList<>();
+    private final ArrayList<Setting<?>> settings = new ArrayList<>();
 
     private boolean enabled = false;
 
@@ -37,6 +37,10 @@ public abstract class Module implements MinecraftTrait {
         } else {
             onDisable();
         }
+    }
+
+    public boolean isntNullSafe() {
+        return mc.player == null || mc.world == null;
     }
 
     public void onEnable() {

@@ -23,6 +23,9 @@ public final class MixinWorldRenderer {
     @Inject(method = "render", at = @At(value = "RETURN"))
     private void render(MatrixStack matrices, float tickDelta, long limitTime, boolean renderBlockOutline, Camera camera, GameRenderer gameRenderer, LightmapTextureManager lightmapTextureManager, Matrix4f matrix4f, CallbackInfo callbackInfo) {
         WorldRenderEvent worldRenderEvent = new WorldRenderEvent();
-        Lumen.EVENT_HANDLER.dispatchPaceEvent(worldRenderEvent);
+
+        if (!worldRenderEvent.isCancelled()) {
+            Lumen.EVENT_HANDLER.dispatchPaceEvent(worldRenderEvent);
+        }
     }
 }
