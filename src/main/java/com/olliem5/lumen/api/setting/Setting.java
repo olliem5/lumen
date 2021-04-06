@@ -24,7 +24,7 @@ public final class Setting<T> {
         this.value = value;
     }
 
-    public Setting(String name, T min, T value, T max, int roundingScale){
+    public Setting(String name, T min, T value, T max, int roundingScale) {
         this.name = name;
         this.min = min;
         this.value = value;
@@ -32,7 +32,7 @@ public final class Setting<T> {
         this.roundingScale = roundingScale;
     }
 
-    public Setting(String name, String description, T min, T value, T max, int roundingScale){
+    public Setting(String name, String description, T min, T value, T max, int roundingScale) {
         this.name = name;
         this.description = description;
         this.min = min;
