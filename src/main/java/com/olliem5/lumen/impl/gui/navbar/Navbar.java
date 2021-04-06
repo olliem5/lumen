@@ -28,7 +28,7 @@ public final class Navbar implements MinecraftTrait {
         int xOffset = 0;
 
         for (NavbarElement navbarElement : NavbarElementManager.getNavbarElements()) {
-            navbarElement.render(matrices, mouseX, mouseY, delta, 2 + ((height -2) * xOffset), 2, height -2);
+            navbarElement.render(matrices, mouseX, mouseY, delta, height * xOffset, 0, height);
             xOffset++;
         }
     }

@@ -25,9 +25,9 @@ public abstract class NavbarElement extends DrawableHelper implements MinecraftT
     }
 
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta, int x, int y, int size) {
-        fill(matrices, x, y, size, size, new Color(70, 70, 70, 180).getRGB());
+        fill(matrices, x, y, x + size, y + size, new Color(70, 70, 70, 180).getRGB());
         mc.getTextureManager().bindTexture(identifier);
-        drawTexture(matrices, x, y, 0, 0, size, size);
+        drawTexture(matrices, x, y, 0, 0, x + size, y + size);
     }
 
     public String getName() {
