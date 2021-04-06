@@ -8,7 +8,7 @@ package com.olliem5.lumen.api.setting;
 public final class Setting<T> {
     private final String name;
     private String description;
-    private final T value;
+    private T value;
     private T min;
     private T max;
     private int roundingScale;
@@ -51,6 +51,10 @@ public final class Setting<T> {
 
     public T getValue() {
         return value;
+    }
+
+    public void setValue(T value) {
+        this.value = value;
     }
 
     public T getMin() {
