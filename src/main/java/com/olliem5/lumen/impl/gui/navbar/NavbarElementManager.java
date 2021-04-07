@@ -6,6 +6,7 @@ import com.olliem5.lumen.impl.gui.navbar.elements.ModulesElement;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author olliem5
@@ -13,7 +14,7 @@ import java.util.Arrays;
  */
 
 public final class NavbarElementManager {
-    private static final ArrayList<NavbarElement> navbarElements = new ArrayList<>();
+    private static final List<NavbarElement> navbarElements = new ArrayList<>();
 
     public static void initialize() {
         navbarElements.addAll(Arrays.asList(
@@ -23,7 +24,7 @@ public final class NavbarElementManager {
         ));
     }
 
-    public static ArrayList<NavbarElement> getNavbarElements() {
+    public static List<NavbarElement> getNavbarElements() {
         return navbarElements;
     }
 }

@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -28,7 +29,7 @@ public abstract class Module implements MinecraftTrait {
     private final ModuleCategory category = getAnnotation().category();
     private int key = getAnnotation().key();
 
-    private final ArrayList<Setting<?>> settings = new ArrayList<>();
+    private final List<Setting<?>> settings = new ArrayList<>();
 
     private boolean enabled = false;
 
@@ -82,7 +83,7 @@ public abstract class Module implements MinecraftTrait {
         this.key = key;
     }
 
-    public ArrayList<Setting<?>> getSettings() {
+    public List<Setting<?>> getSettings() {
         return settings;
     }
 

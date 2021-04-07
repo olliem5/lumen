@@ -27,6 +27,8 @@ public abstract class Window implements MinecraftTrait {
     }
 
     public abstract void render(MatrixStack matrices, int mouseX, int mouseY, float delta);
+    public abstract void mouseClicked(double mouseX, double mouseY, int button);
+    public abstract void mouseReleased(double mouseX, double mouseY, int button);
 
     public String getTitle() {
         return title;

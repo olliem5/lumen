@@ -17,4 +17,14 @@ public final class ModuleWindow extends Window {
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
 
     }
+
+    @Override
+    public void mouseClicked(double mouseX, double mouseY, int button) {
+
+    }
+
+    @Override
+    public void mouseReleased(double mouseX, double mouseY, int button) {
+
+    }
 }

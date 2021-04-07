@@ -6,6 +6,7 @@ import com.olliem5.lumen.impl.gui.window.windows.ModuleWindow;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author olliem5
@@ -13,7 +14,7 @@ import java.util.Arrays;
  */
 
 public final class WindowManager {
-    private static final ArrayList<Window> windows = new ArrayList<>();
+    private static final List<Window> windows = new ArrayList<>();
 
     public static void initialize() {
         windows.addAll(Arrays.asList(
@@ -23,7 +24,7 @@ public final class WindowManager {
         ));
     }
 
-    public static ArrayList<Window> getWindows() {
+    public static List<Window> getWindows() {
         return windows;
     }
 }
