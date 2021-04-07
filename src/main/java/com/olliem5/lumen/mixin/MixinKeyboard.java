@@ -24,10 +24,7 @@ public final class MixinKeyboard {
             //if (minecraftClient.currentScreen instanceof ClickGUI)
             if (i != GLFW_RELEASE) {
                 KeyPressEvent keyPressEvent = new KeyPressEvent(key);
-
-                if (!keyPressEvent.isCancelled()) {
-                    Lumen.EVENT_HANDLER.dispatchPaceEvent(keyPressEvent);
-                }
+                Lumen.EVENT_HANDLER.dispatchPaceEvent(keyPressEvent);
             }
         }
     }

@@ -50,7 +50,7 @@ public final class MainScreen extends Screen {
 
     @Override
     public boolean mouseReleased(double mouseX, double mouseY, int button) {
-        navbar.mouseClicked(mouseX, mouseY, button);
+        navbar.mouseReleased(mouseX, mouseY, button);
 
         windows.forEach(window -> {
             if (window.isVisible()) {
