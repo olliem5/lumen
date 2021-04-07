@@ -7,7 +7,7 @@ import com.olliem5.lumen.impl.modules.GUI;
 import com.olliem5.lumen.impl.modules.TestModule;
 import com.olliem5.pace.annotation.PaceHandler;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * @author olliem5
@@ -15,12 +15,13 @@ import java.util.ArrayList;
  */
 
 public final class ModuleManager {
-    private static final ArrayList<Module> modules = new ArrayList<>();
+    private static final List<Module> modules = new ArrayList<>();
+    private static final Map<Class<? extends Module>, Module> moduleInstances = new HashMap<>();
+
 
     public static void initialize() {
-        //modules.addAll(Arrays.asList(...));
-        modules.add(new TestModule());
-        modules.add(new GUI());
+        add(new TestModule());
+        add(new GUI());
         modules.sort(ModuleManager::alphabetize);
     }
 
@@ -28,11 +29,31 @@ public final class ModuleManager {
         return module1.getName().compareTo(module2.getName());
     }
 
-    public static ArrayList<Module> getModules() {
+    private static void add(Module module) {
+        modules.add(module);
+        moduleInstances.put(module.getClass(), module);
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T extends Module> T get(Class<T> klass) {
+        return (T) moduleInstances.get(klass);
+    }
+
+    public static Module get(String name) {
+        for (Module module : modules) {
+            if (module.getName().equalsIgnoreCase(name)) return module;
+        }
+        return null;
+    }
+
+    public static List<Module> getAll() {
         return modules;
     }
 
-    //TODO: Class lookup
+    public static boolean isActive(Class<? extends Module> klass) {
+        Module module = get(klass);
+        return module != null && module.isEnabled();
+    }
 
     @PaceHandler
     public void onUpdate(UpdateEvent event) {
