@@ -3,9 +3,11 @@ package com.olliem5.lumen.api.module;
 import com.olliem5.lumen.Lumen;
 import com.olliem5.lumen.api.setting.Setting;
 import com.olliem5.lumen.api.traits.MinecraftTrait;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 /**
  * @author olliem5
@@ -21,6 +23,7 @@ public abstract class Module implements MinecraftTrait {
     }
 
     private final String name = getAnnotation().name();
+    private final String title = Arrays.stream(getAnnotation().name().split("-")).map(StringUtils::capitalize).collect(Collectors.joining(" "));
     private final String description = getAnnotation().description();
     private final ModuleCategory category = getAnnotation().category();
     private int key = getAnnotation().key();

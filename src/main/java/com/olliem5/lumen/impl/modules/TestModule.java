@@ -14,7 +14,7 @@ import static org.lwjgl.glfw.GLFW.GLFW_KEY_H;
  * @since 1.0
  */
 
-@ModuleManifest(name = "TestModule", description = "Module for testing", category = ModuleCategory.CLIENT, key = GLFW_KEY_H)
+@ModuleManifest(name = "test-module", description = "Module for testing", category = ModuleCategory.CLIENT, key = GLFW_KEY_H)
 public final class TestModule extends Module {
     public static final Setting<Boolean> booleanSetting = new Setting<>("Boolean Setting", "This is a boolean setting", true);
     public static final Setting<String> stringSetting = new Setting<>("String Setting", "This is a string setting", "StringValue");
