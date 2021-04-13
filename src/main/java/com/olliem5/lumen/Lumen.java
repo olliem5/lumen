@@ -1,7 +1,6 @@
 package com.olliem5.lumen;
 
 import com.olliem5.lumen.api.module.ModuleManager;
-import com.olliem5.lumen.api.util.Funny;
 import com.olliem5.lumen.impl.gui.navbar.NavbarElementManager;
 import com.olliem5.lumen.impl.gui.window.WindowManager;
 import com.olliem5.pace.handler.EventHandler;
@@ -31,8 +30,6 @@ public final class Lumen implements ModInitializer {
 		NavbarElementManager.initialize();
 		WindowManager.initialize();
 		log("GUI Initialized!");
-
-		Funny.doFunny();
 
 		log("Finished Initializing.");
 	}
