@@ -38,8 +38,8 @@ public final class ModuleManager {
     }
 
     @SuppressWarnings("unchecked")
-    public static <T extends Module> T getModule(Class<T> klass) {
-        return (T) moduleInstances.get(klass);
+    public static <T extends Module> T getModule(Class<T> clazz) {
+        return (T) moduleInstances.get(clazz);
     }
 
     public static Module getModule(String name) {
@@ -49,13 +49,13 @@ public final class ModuleManager {
         return null;
     }
 
-    public static List<Module> getModules() {
-        return modules;
+    public static boolean isModuleEnabled(Class<? extends Module> clazz) {
+        Module module = getModule(clazz);
+        return module != null && module.isEnabled();
     }
 
-    public static boolean isActive(Class<? extends Module> klass) {
-        Module module = getModule(klass);
-        return module != null && module.isEnabled();
+    public static List<Module> getModules() {
+        return modules;
     }
 
     @PaceHandler

@@ -6,19 +6,18 @@ import java.awt.*;
 
 /**
  * @author olliem5
+ * @since 1.0
  */
 
 public final class BlockRender {
     private BlockRenderer.Types type;
     private float lineWidth;
-    private Color boxColour;
-    private Color outlineColour;
+    private Color colour;
 
-    public BlockRender(BlockRenderer.Types type, float lineWidth, Color boxColour, Color outlineColour) {
+    public BlockRender(BlockRenderer.Types type, float lineWidth, Color colour) {
         this.type = type;
         this.lineWidth = lineWidth;
-        this.boxColour = boxColour;
-        this.outlineColour = outlineColour;
+        this.colour = colour;
     }
 
     public BlockRenderer.Types getType() {
@@ -29,12 +28,8 @@ public final class BlockRender {
         return lineWidth;
     }
 
-    public Color getBoxColour() {
-        return boxColour;
-    }
-
-    public Color getOutlineColour() {
-        return outlineColour;
+    public Color getColour() {
+        return colour;
     }
 
     public void setType(BlockRenderer.Types type) {
@@ -45,11 +40,7 @@ public final class BlockRender {
         this.lineWidth = lineWidth;
     }
 
-    public void setBoxColour(Color boxColour) {
-        this.boxColour = boxColour;
-    }
-
-    public void setOutlineColour(Color outlineColour) {
-        this.outlineColour = outlineColour;
+    public void setColour(Color colour) {
+        this.colour = colour;
     }
 }
