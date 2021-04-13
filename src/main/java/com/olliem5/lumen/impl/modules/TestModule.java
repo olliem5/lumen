@@ -8,6 +8,7 @@ import com.olliem5.lumen.api.setting.custom.BlockRender;
 import com.olliem5.lumen.api.setting.custom.Keybind;
 import com.olliem5.lumen.api.setting.custom.Switch;
 import com.olliem5.lumen.api.util.BlockRenderer;
+import com.olliem5.lumen.api.util.Configuration;
 import org.lwjgl.glfw.GLFW;
 
 import java.awt.*;
@@ -38,7 +39,10 @@ public final class TestModule extends Module {
                 colourSetting,
                 integerSetting,
                 doubleSetting,
-                floatSetting
+                floatSetting,
+                blockRenderSetting,
+                keybindSetting,
+                switchSetting
         );
     }
 
