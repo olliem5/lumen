@@ -3,7 +3,7 @@ package com.olliem5.lumen.impl.modules;
 import com.olliem5.lumen.api.module.Module;
 import com.olliem5.lumen.api.module.ModuleCategory;
 import com.olliem5.lumen.api.module.ModuleManifest;
-import com.olliem5.lumen.impl.gui.MainScreen;
+import com.olliem5.lumen.impl.gui.LumenGUI;
 import org.lwjgl.glfw.GLFW;
 
 /**
@@ -16,7 +16,8 @@ public final class GUI extends Module {
     @Override
     public void onEnable() {
         if (isntNullSafe()) return;
-        mc.openScreen(new MainScreen());
+        LumenGUI lumenGUI = new LumenGUI();
+        lumenGUI.enterGUI();
         mc.player.sendChatMessage("Enabled module!");
         this.toggle();
     }

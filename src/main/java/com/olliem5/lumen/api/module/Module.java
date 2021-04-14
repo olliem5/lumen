@@ -1,5 +1,6 @@
 package com.olliem5.lumen.api.module;
 
+import com.lukflug.panelstudio.settings.Toggleable;
 import com.olliem5.lumen.Lumen;
 import com.olliem5.lumen.api.setting.Setting;
 import com.olliem5.lumen.api.traits.MinecraftTrait;
@@ -15,7 +16,7 @@ import java.util.stream.Collectors;
  * @since 1.0
  */
 
-public abstract class Module implements MinecraftTrait {
+public abstract class Module implements MinecraftTrait, Toggleable {
     private ModuleManifest getAnnotation() {
         if (getClass().isAnnotationPresent(ModuleManifest.class)) {
             return getClass().getAnnotation(ModuleManifest.class);
@@ -94,4 +95,8 @@ public abstract class Module implements MinecraftTrait {
     public void onUpdate() {}
 
     public void onRender() {}
+
+    public boolean isOn() {
+        return this.enabled;
+    }
 }

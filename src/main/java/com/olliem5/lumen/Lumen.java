@@ -2,8 +2,6 @@ package com.olliem5.lumen;
 
 import com.olliem5.lumen.api.module.ModuleManager;
 import com.olliem5.lumen.api.util.Configuration;
-import com.olliem5.lumen.impl.gui.navbar.NavbarElementManager;
-import com.olliem5.lumen.impl.gui.window.WindowManager;
 import com.olliem5.pace.handler.EventHandler;
 import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.LogManager;
@@ -27,10 +25,6 @@ public final class Lumen implements ModInitializer {
 		ModuleManager.initialize();
 		EVENT_HANDLER.register(new ModuleManager());
 		log("Modules Initialized!");
-
-		NavbarElementManager.initialize();
-		WindowManager.initialize();
-		log("GUI Initialized!");
 
 		Runtime.getRuntime().addShutdownHook(new Thread(Configuration::saveConfiguration));
 

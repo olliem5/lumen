@@ -8,7 +8,6 @@ import com.olliem5.lumen.api.setting.custom.BlockRender;
 import com.olliem5.lumen.api.setting.custom.Keybind;
 import com.olliem5.lumen.api.setting.custom.Switch;
 import com.olliem5.lumen.api.util.BlockRenderer;
-import com.olliem5.lumen.api.util.Configuration;
 import org.lwjgl.glfw.GLFW;
 
 import java.awt.*;
@@ -24,9 +23,9 @@ public final class TestModule extends Module {
     public static final Setting<String> stringSetting = new Setting<>("String Setting", "This is a string setting", "StringValue");
     public static final Setting<TestModes> modeSetting = new Setting<>("Mode Setting", "This is a mode setting", TestModes.MODEONE);
     public static final Setting<Color> colourSetting = new Setting<>("Colour Setting", "This is a colour setting", new Color(100, 100, 100, 100));
-    public static final Setting<Integer> integerSetting = new Setting<>("Integer Setting", "This is an integer setting", 0, 1, 2, 1);
-    public static final Setting<Double> doubleSetting = new Setting<>("Double Setting", "This is a double setting", 0.0, 1.0, 2.0, 1);
-    public static final Setting<Float> floatSetting = new Setting<>("Float Setting", "This is a float setting", 0.0f, 1.0f, 2.0f, 1);
+    public static final Setting<Integer> integerSetting = new Setting<>("Integer Setting", "This is an integer setting", 0, 1, 2);
+    public static final Setting<Double> doubleSetting = new Setting<>("Double Setting", "This is a double setting", 0.0, 1.0, 2.0);
+    public static final Setting<Float> floatSetting = new Setting<>("Float Setting", "This is a float setting", 0.0f, 1.0f, 2.0f);
     public static final Setting<BlockRender> blockRenderSetting = new Setting<>("Block Render Setting", "This is a block render setting", new BlockRender(BlockRenderer.Types.Full, 2.50f, new Color(255, 255, 255, 255)));
     public static final Setting<Keybind> keybindSetting = new Setting<>("Keybind Setting", "This is a keybind setting", new Keybind(GLFW.GLFW_KEY_A));
     public static final Setting<Switch> switchSetting = new Setting<>("Switch Setting", "This is a switch setting", new Switch(Switch.Types.Standard, 10.0));
@@ -65,7 +64,7 @@ public final class TestModule extends Module {
         //mc.player.sendChatMessage("Yay! Update event working....");
     }
 
-    private enum TestModes {
+    private enum TestModes { //TODO: Strings for these
         MODEONE,
         MODETWO
     }

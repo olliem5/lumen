@@ -1,12 +1,18 @@
 plugins {
-	id 'fabric-loom' version '0.6-SNAPSHOT'
-	id 'maven-publish'
+	id "fabric-loom" version "0.6-SNAPSHOT"
+	id "maven-publish"
+	id "com.github.johnrengelman.shadow" version "5.2.0"
 }
 
 allprojects {
 	repositories {
 		maven {
-			url "https://jitpack.io"
+			name = "jitpack.io"
+			url = "https://jitpack.io"
+		}
+		maven {
+			name = 'lukflug'
+			url = 'https://lukflug.github.io/maven'
 		}
 	}
 }
@@ -24,8 +30,9 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:0.11.3"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:0.32.5+1.16"
 
-	modImplementation "com.github.olliem5:pace:1.3"
-	include "com.github.olliem5:pace:1.3"
+	compile "com.github.olliem5:pace:1.3"
+	compile "com.lukflug:panelstudio:0.1.8"
+	compile "com.lukflug:panelstudio-mc8-fabric:0.1.10"
 }
 
 processResources {
@@ -50,26 +57,23 @@ java {
 	withSourcesJar()
 }
 
+shadowJar {
+	dependencies {
+		include(dependency("com.github.olliem5:pace"))
+		include(dependency("com.lukflug:panelstudio"))
+		include(dependency("com.lukflug:panelstudio-mc8-fabric"))
+	}
+	//noinspection GrDeprecatedAPIUsage
+	classifier = "shadow"
+}
+
 jar {
 	from("LICENSE") {
 		rename { "${it}_${project.archivesBaseName}"}
 	}
 }
 
-publishing {
-	publications {
-		mavenJava(MavenPublication) {
-			artifact(remapJar) {
-				builtBy remapJar
-			}
-
-			artifact(sourcesJar) {
-				builtBy remapSourcesJar
-			}
-		}
-	}
-
-    repositories {
-
-    }
+remapJar {
+	dependsOn(shadowJar)
+	input.set(shadowJar.archiveFile)
 }
