@@ -13,7 +13,7 @@ import java.util.Arrays;
  * @since 1.0
  */
 
-@ModuleManifest(name = "test-module", description = "Module for testing", category = ModuleCategory.CLIENT, key = GLFW.GLFW_KEY_H)
+@ModuleManifest(name = "TestModule", description = "Module for testing", category = ModuleCategory.CLIENT, key = GLFW.GLFW_KEY_H)
 public final class TestModule extends Module {
     private final BooleanSetting booleanSetting = registerBoolean("Boolean", true);
     private final ModeSetting modeSetting = registerMode("Mode", "Mode1", Arrays.asList("Mode1", "Mode2"));

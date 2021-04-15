@@ -3,6 +3,7 @@ package com.olliem5.lumen.api.module;
 import com.olliem5.lumen.impl.events.KeyPressEvent;
 import com.olliem5.lumen.impl.events.UpdateEvent;
 import com.olliem5.lumen.impl.events.WorldRenderEvent;
+import com.olliem5.lumen.impl.modules.Colours;
 import com.olliem5.lumen.impl.modules.GUI;
 import com.olliem5.lumen.impl.modules.TestModule;
 import com.olliem5.pace.annotation.PaceHandler;
@@ -24,6 +25,7 @@ public final class ModuleManager {
     public static void initialize() {
         addModule(new TestModule());
         addModule(new GUI());
+        addModule(new Colours());
 
         modules.sort(ModuleManager::alphabetize);
     }

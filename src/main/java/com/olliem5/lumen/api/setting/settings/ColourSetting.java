@@ -13,10 +13,12 @@ import java.awt.*;
 
 public final class ColourSetting extends Setting implements ColorSetting {
     private Color value;
+    private boolean rainbow;
 
-    public ColourSetting(String name, Module parent, Color value) {
+    public ColourSetting(String name, Module parent, Color value, boolean rainbow) {
         super(name, parent);
         this.value = value;
+        this.rainbow = rainbow;
     }
 
     @Override
@@ -36,11 +38,11 @@ public final class ColourSetting extends Setting implements ColorSetting {
 
     @Override
     public boolean getRainbow() {
-        return false;
+        return rainbow;
     }
 
     @Override
     public void setRainbow(boolean rainbow) {
-
+        this.rainbow = rainbow;
     }
 }

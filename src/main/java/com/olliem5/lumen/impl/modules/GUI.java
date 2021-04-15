@@ -19,16 +19,16 @@ import java.util.Arrays;
 
 @ModuleManifest(name = "GUI", description = "Opens Lumen's GUI", category = ModuleCategory.CLIENT, key = GLFW.GLFW_KEY_RIGHT_SHIFT)
 public final class GUI extends Module {
-    public final ModeSetting scrolling = registerMode("Scrolling", "Screen", Arrays.asList("Screen", "Container"));
+    public final ModeSetting scroll = registerMode("Scroll", "Container", Arrays.asList("Screen", "Container"));
     public final IntegerSetting scrollSpeed = registerInteger("Scroll Speed", 1, 10, 20);
-    public final IntegerSetting animationSpeed = registerInteger("Animation Speed", 0, 200, 1000);
+    public final IntegerSetting animationSpeed = registerInteger("Animation Speed", 0, 250, 1000);
     public final IntegerSetting opacity = registerInteger("Opacity", 50, 150, 255);
 
-    public final ColourSetting colourSetting1 = registerColour("Colour 1", Color.black);
-    public final ColourSetting colourSetting2 = registerColour("Colour 2", Color.red);
-    public final ColourSetting colourSetting3 = registerColour("Colour 3", Color.blue);
-    public final ColourSetting colourSetting4 = registerColour("Colour 4", Color.green);
-    public final ColourSetting colourSetting5 = registerColour("Colour 5", Color.green);
+    public final ColourSetting outlineColour = registerColour("Outline", new Color(200, 20, 20, 250));
+    public final ColourSetting enabledColour = registerColour("Enabled", new Color(120, 10, 10, 210));
+    public final ColourSetting backgroundColour = registerColour("Background", new Color(20, 20, 20, 220));
+    public final ColourSetting settingColour = registerColour("Setting", new Color(140, 15, 15, 200));
+    public final ColourSetting fontColour = registerColour("Font", new Color(255, 255, 255, 255));
 
     @Override
     public void onEnable() {
