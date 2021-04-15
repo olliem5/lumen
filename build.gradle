@@ -32,7 +32,7 @@ dependencies {
 
 	compile "com.github.olliem5:pace:1.3"
 	compile "com.lukflug:panelstudio:0.1.8"
-	compile "com.lukflug:panelstudio-mc8-fabric:0.1.10"
+	compile "com.lukflug:panelstudio-mc16:0.1.9"
 }
 
 processResources {
@@ -61,7 +61,7 @@ shadowJar {
 	dependencies {
 		include(dependency("com.github.olliem5:pace"))
 		include(dependency("com.lukflug:panelstudio"))
-		include(dependency("com.lukflug:panelstudio-mc8-fabric"))
+		include(dependency("com.lukflug:panelstudio-mc16"))
 	}
 	//noinspection GrDeprecatedAPIUsage
 	classifier = "shadow"

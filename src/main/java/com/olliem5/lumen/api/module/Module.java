@@ -3,9 +3,11 @@ package com.olliem5.lumen.api.module;
 import com.lukflug.panelstudio.settings.Toggleable;
 import com.olliem5.lumen.Lumen;
 import com.olliem5.lumen.api.setting.Setting;
+import com.olliem5.lumen.api.setting.settings.*;
 import com.olliem5.lumen.api.traits.MinecraftTrait;
 import org.apache.commons.lang3.StringUtils;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -30,7 +32,7 @@ public abstract class Module implements MinecraftTrait, Toggleable {
     private final ModuleCategory category = getAnnotation().category();
     private int key = getAnnotation().key();
 
-    private final List<Setting<?>> settings = new ArrayList<>();
+    private final List<Setting> settings = new ArrayList<>();
 
     private boolean enabled = false;
 
@@ -42,6 +44,42 @@ public abstract class Module implements MinecraftTrait, Toggleable {
         } else {
             onDisable();
         }
+    }
+
+    public BooleanSetting registerBoolean(String name, boolean value) {
+        BooleanSetting booleanSetting = new BooleanSetting(name, this, value);
+        settings.add(booleanSetting);
+        return booleanSetting;
+    }
+
+    public ModeSetting registerMode(String name, String value, List<String> modes) {
+        ModeSetting modeSetting = new ModeSetting(name, this, value, modes);
+        settings.add(modeSetting);
+        return modeSetting;
+    }
+
+    public ColourSetting registerColour(String name, Color value) {
+        ColourSetting colourSetting = new ColourSetting(name, this, value);
+        settings.add(colourSetting);
+        return colourSetting;
+    }
+
+    public IntegerSetting registerInteger(String name, int min, int value, int max) {
+        IntegerSetting integerSetting = new IntegerSetting(name, this, min, value, max);
+        settings.add(integerSetting);
+        return integerSetting;
+    }
+
+    public DoubleSetting registerDouble(String name, double min, double value, double max) {
+        DoubleSetting doubleSetting = new DoubleSetting(name, this, min, value, max);
+        settings.add(doubleSetting);
+        return doubleSetting;
+    }
+
+    public FloatSetting registerFloat(String name, float min, float value, float max) {
+        FloatSetting floatSetting = new FloatSetting(name, this, min, value, max);
+        settings.add(floatSetting);
+        return floatSetting;
     }
 
     public boolean isntNullSafe() {
@@ -84,11 +122,11 @@ public abstract class Module implements MinecraftTrait, Toggleable {
         this.key = key;
     }
 
-    public List<Setting<?>> getSettings() {
+    public List<Setting> getSettings() {
         return settings;
     }
 
-    public void addSettings(Setting<?>... settings) {
+    public void addSettings(Setting... settings) {
         this.settings.addAll(Arrays.asList(settings));
     }
 

@@ -54,6 +54,18 @@ public final class ModuleManager {
         return module != null && module.isEnabled();
     }
 
+    public static List<Module> getModulesInCategory(ModuleCategory moduleCategory) {
+        List<Module> list = new ArrayList<>();
+
+        for (Module module : moduleInstances.values()) {
+            if (module.getCategory().equals(moduleCategory)) {
+                list.add(module);
+            }
+        }
+
+        return list;
+    }
+
     public static List<Module> getModules() {
         return modules;
     }

@@ -1,9 +1,6 @@
 package com.olliem5.lumen.api.util;
 
-import com.olliem5.lumen.api.setting.Setting;
-import com.olliem5.lumen.api.setting.custom.BlockRender;
 import net.minecraft.util.math.BlockPos;
-import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 
@@ -34,29 +31,8 @@ public final class BlockRenderer {
 
     }
 
-    private void draw(Setting<BlockRender> setting, BlockPos blockPos, Color colour) {
+    private void draw(BlockPos blockPos, Color colour) {
         GLHelper.prepareGL();
-        GL11.glLineWidth(setting.getValue().getLineWidth());
-
-        if (setting.getValue().getType() == Types.Box) {
-            drawBox(blockPos, colour);
-        }
-
-        if (setting.getValue().getType() == Types.Outline) {
-            drawOutline(blockPos, colour);
-        }
-
-        if (setting.getValue().getType() == Types.Full) {
-            drawFull(blockPos, colour);
-        }
-
-        if (setting.getValue().getType() == Types.Claw) {
-            drawClaw(blockPos, colour);
-        }
-
-        if (setting.getValue().getType() == Types.Glow) {
-            drawGlow(blockPos, colour);
-        }
 
         GLHelper.releaseGL();
     }
