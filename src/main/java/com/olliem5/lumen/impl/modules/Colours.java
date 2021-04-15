@@ -12,7 +12,7 @@ import java.util.Arrays;
  * @since 1.0
  */
 
-@ModuleManifest(name = "Colours", description = "Controls client colours", category = ModuleCategory.CLIENT)
+@ModuleManifest(name = "Colours", description = "Controls client colours", category = ModuleCategory.LUMEN)
 public final class Colours extends Module {
     public final ModeSetting colourModel = registerMode("Colour Model", "RGB", Arrays.asList("RGB", "HSB"));
 }

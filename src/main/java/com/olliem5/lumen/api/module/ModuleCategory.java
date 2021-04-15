@@ -6,10 +6,20 @@ package com.olliem5.lumen.api.module;
  */
 
 public enum ModuleCategory {
-    COMBAT,
-    MOVEMENT,
-    RENDER,
-    EXPLOIT,
-    MISCELLANEOUS,
-    CLIENT
+    COMBAT("Combat"),
+    MOVEMENT("Movement"),
+    RENDER("Render"),
+    EXPLOIT("Exploit"),
+    MISCELLANEOUS("Miscellaneous"),
+    LUMEN("Lumen");
+
+    private final String name;
+
+    ModuleCategory(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
+    }
 }

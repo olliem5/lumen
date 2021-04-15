@@ -17,8 +17,9 @@ import java.util.Arrays;
  * @since 1.0
  */
 
-@ModuleManifest(name = "GUI", description = "Opens Lumen's GUI", category = ModuleCategory.CLIENT, key = GLFW.GLFW_KEY_RIGHT_SHIFT)
+@ModuleManifest(name = "GUI", description = "Opens Lumen's GUI", category = ModuleCategory.LUMEN, key = GLFW.GLFW_KEY_RIGHT_SHIFT)
 public final class GUI extends Module {
+    public final ModeSetting theme = registerMode("Theme", "Lumen", Arrays.asList("Lumen", "GameSense", "Clear", "ClearGradient"));
     public final ModeSetting scroll = registerMode("Scroll", "Container", Arrays.asList("Screen", "Container"));
     public final IntegerSetting scrollSpeed = registerInteger("Scroll Speed", 1, 10, 20);
     public final IntegerSetting animationSpeed = registerInteger("Animation Speed", 0, 250, 1000);
