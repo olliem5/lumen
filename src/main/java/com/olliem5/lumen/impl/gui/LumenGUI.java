@@ -9,7 +9,6 @@ import com.lukflug.panelstudio.mc16.GLInterface;
 import com.lukflug.panelstudio.mc16.MinecraftHUDGUI;
 import com.lukflug.panelstudio.settings.*;
 import com.lukflug.panelstudio.theme.ColorScheme;
-import com.lukflug.panelstudio.theme.FixedDescription;
 import com.lukflug.panelstudio.theme.SettingsColorScheme;
 import com.lukflug.panelstudio.theme.Theme;
 import com.olliem5.lumen.api.module.Module;
@@ -23,7 +22,7 @@ import net.minecraft.client.util.math.MatrixStack;
 
 import java.awt.*;
 
-public final class LumenGUI extends MinecraftHUDGUI implements MinecraftTrait {
+public final class LumenGUI extends MinecraftHUDGUI {
     public static final int WIDTH = 100, HEIGHT = 12, DISTANCE = 10, HUD_BORDER = 2;
     private final Toggleable colorToggle;
     public final GUIInterface guiInterface;
@@ -31,9 +30,11 @@ public final class LumenGUI extends MinecraftHUDGUI implements MinecraftTrait {
     private final Theme theme;
 
     public LumenGUI() {
+        GUI clickGuiModule = ModuleManager.getModule(GUI.class);
         //ColorMain colorMain = ModuleManager.getModule(ColorMain.class);
-        ColorScheme scheme = new SettingsColorScheme(ModuleManager.getModule(GUI.class).colourSetting1, ModuleManager.getModule(GUI.class).colourSetting2, ModuleManager.getModule(GUI.class).colourSetting3, ModuleManager.getModule(GUI.class).colourSetting4, ModuleManager.getModule(GUI.class).colourSetting5, ModuleManager.getModule(GUI.class).opacity);
-        theme = new LumenTheme(scheme, height, 2, 5);
+        ColorScheme scheme = new SettingsColorScheme(clickGuiModule.colourSetting1, clickGuiModule.colourSetting2, clickGuiModule.colourSetting3, clickGuiModule.colourSetting4, clickGuiModule.colourSetting5, clickGuiModule.opacity);
+        theme = new LumenTheme(scheme, HEIGHT, 2, 5);
+
         colorToggle = new Toggleable() {
             @Override
             public void toggle() {
@@ -51,34 +52,35 @@ public final class LumenGUI extends MinecraftHUDGUI implements MinecraftTrait {
             public void drawString(Point pos, String s, Color c) {
                 GLInterface.end();
                 int x = pos.x + 2, y = pos.y + 1;
-                //if (!colorMain.customFont.getValue()) {
-                    //x += 1;
-                    //y += 1;
-                //}
-                MinecraftTrait.textRenderer.drawWithShadow(new MatrixStack(), s, pos.x, pos.y, c.getRGB());
+//                if (!colorMain.customFont.getValue()) {
+//                    x += 1;
+//                    y += 1;
+//                }
+
+                textRenderer.drawWithShadow(new MatrixStack(), s, x, y, c.getRGB());
                 GLInterface.begin();
             }
 
             @Override
             public int getFontWidth(String s) {
-                return MinecraftTrait.textRenderer.getWidth(s);
+                return Math.round(textRenderer.getWidth(s)) + 4;
             }
 
             @Override
             public int getFontHeight() {
-                return MinecraftTrait.textRenderer.fontHeight;
+                return Math.round(textRenderer.fontHeight) + 2;
             }
 
             @Override
             public String getResourcePrefix() {
-                return "lumen/";
+                return "gamesense:gui/";
             }
         };
         gui = new HUDClickGUI(guiInterface, null) {
             @Override
             public void handleScroll(int diff) {
                 super.handleScroll(diff);
-                if (ModuleManager.getModule(GUI.class).scrolling.getValue().equals("Screen")) {
+                if (clickGuiModule.scrolling.getValue().equals("Screen")) {
                     for (FixedComponent component : components) {
                         if (!hudComponents.contains(component)) {
                             Point p = component.getPosition(guiInterface);
@@ -96,7 +98,7 @@ public final class LumenGUI extends MinecraftHUDGUI implements MinecraftTrait {
 
             @Override
             public boolean isOn() {
-                //return gui.isOn() && clickGuiModule.showHUD.isOn() || hudEditor;
+//                return gui.isOn() && clickGuiModule.showHUD.isOn() || hudEditor;
                 return false;
             }
         };
@@ -109,11 +111,11 @@ public final class LumenGUI extends MinecraftHUDGUI implements MinecraftTrait {
 //        }
         Point pos = new Point(DISTANCE, DISTANCE);
         for (ModuleCategory category : ModuleCategory.values()) {
-            DraggableContainer panel = new DraggableContainer(category.name(), null, theme.getPanelRenderer(), new SimpleToggleable(false), new SettingsAnimation(ModuleManager.getModule(GUI.class).animationSpeed), null, new Point(pos), WIDTH) {
+            DraggableContainer panel = new DraggableContainer(category.name(), null, theme.getPanelRenderer(), new SimpleToggleable(false), new SettingsAnimation(clickGuiModule.animationSpeed), null, new Point(pos), WIDTH) {
 
                 @Override
                 protected int getScrollHeight(int childHeight) {
-                    if (ModuleManager.getModule(GUI.class).scrolling.getValue().equals("Screen")) {
+                    if (clickGuiModule.scrolling.getValue().equals("Screen")) {
                         return childHeight;
                     }
                     return Math.min(childHeight, Math.max(HEIGHT * 4, LumenGUI.this.height - getPosition(guiInterface).y - renderer.getHeight(open.getValue() != 0) - HEIGHT));
@@ -128,7 +130,8 @@ public final class LumenGUI extends MinecraftHUDGUI implements MinecraftTrait {
     }
 
     private void addModule(CollapsibleContainer panel, Module module) {
-        CollapsibleContainer container = new CollapsibleContainer(module.getName(), null, theme.getContainerRenderer(), new SimpleToggleable(false), new SettingsAnimation(ModuleManager.getModule(GUI.class).animationSpeed), module);
+        GUI clickGuiModule = ModuleManager.getModule(GUI.class);
+        CollapsibleContainer container = new CollapsibleContainer(module.getName(), null, theme.getContainerRenderer(), new SimpleToggleable(false), new SettingsAnimation(clickGuiModule.animationSpeed), module);
         panel.addComponent(container);
         for (Setting property : module.getSettings()) {
             if (property instanceof BooleanSetting) {
@@ -143,8 +146,7 @@ public final class LumenGUI extends MinecraftHUDGUI implements MinecraftTrait {
                 container.addComponent(new NumberComponent(property.getName(), null, theme.getComponentRenderer(), (FloatSetting) property, ((FloatSetting) property).getMin(), ((FloatSetting) property).getMax()));
             }
         }
-        //container.addComponent(new GameSenseToggleMessage(theme.getComponentRenderer(), module));
-        //container.addComponent(new GameSenseKeybind(theme.getComponentRenderer(), module));
+
     }
 
     @Override
