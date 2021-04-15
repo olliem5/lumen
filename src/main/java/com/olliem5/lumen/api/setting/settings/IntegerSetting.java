@@ -21,6 +21,10 @@ public final class IntegerSetting extends Setting implements NumberSetting {
         this.max = max;
     }
 
+    public int getValue() {
+        return value;
+    }
+
     @Override
     public double getNumber() {
         return this.value;
@@ -44,17 +48,5 @@ public final class IntegerSetting extends Setting implements NumberSetting {
     @Override
     public int getPrecision() {
         return 0;
-    }
-
-    public int getMin() {
-        return min;
-    }
-
-    public int getValue() {
-        return value;
-    }
-
-    public int getMax() {
-        return max;
     }
 }

@@ -20,6 +20,10 @@ public final class FloatSetting extends Setting implements NumberSetting {
         this.max = max;
     }
 
+    public float getValue() {
+        return value;
+    }
+    
     @Override
     public double getNumber() {
         return this.value;
@@ -43,17 +47,5 @@ public final class FloatSetting extends Setting implements NumberSetting {
     @Override
     public int getPrecision() {
         return 2;
-    }
-
-    public float getMin() {
-        return min;
-    }
-
-    public float getValue() {
-        return value;
-    }
-
-    public float getMax() {
-        return max;
     }
 }

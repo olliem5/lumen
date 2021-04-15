@@ -50,7 +50,7 @@ public abstract class Module implements MinecraftTrait, Toggleable {
         return booleanSetting;
     }
 
-    public ModeSetting registerMode(String name, String value, List<String> modes) {
+    public ModeSetting registerMode(String name, String value, String... modes) {
         ModeSetting modeSetting = new ModeSetting(name, this, value, modes);
         settings.add(modeSetting);
         return modeSetting;

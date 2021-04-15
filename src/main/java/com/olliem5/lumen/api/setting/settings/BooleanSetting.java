@@ -26,4 +26,8 @@ public final class BooleanSetting extends Setting implements Toggleable {
     public boolean isOn() {
         return this.value;
     }
+
+    public boolean getValue() {
+        return this.value;
+    }
 }

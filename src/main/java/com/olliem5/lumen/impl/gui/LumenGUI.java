@@ -144,11 +144,11 @@ public final class LumenGUI extends MinecraftHUDGUI {
             if (setting instanceof BooleanSetting) {
                 container.addComponent(new BooleanComponent(setting.getName(), null, theme.getComponentRenderer(), (BooleanSetting) setting));
             } else if (setting instanceof IntegerSetting) {
-                container.addComponent(new NumberComponent(setting.getName(), null, theme.getComponentRenderer(), (IntegerSetting) setting, ((IntegerSetting) setting).getMin(), ((IntegerSetting) setting).getMax()));
+                container.addComponent(new NumberComponent(setting.getName(), null, theme.getComponentRenderer(), (IntegerSetting) setting, ((IntegerSetting) setting).getMinimumValue(), ((IntegerSetting) setting).getMaximumValue()));
             } else if (setting instanceof DoubleSetting) {
-                container.addComponent(new NumberComponent(setting.getName(), null, theme.getComponentRenderer(), (DoubleSetting) setting, ((DoubleSetting) setting).getMin(), ((DoubleSetting) setting).getMax()));
+                container.addComponent(new NumberComponent(setting.getName(), null, theme.getComponentRenderer(), (DoubleSetting) setting, ((DoubleSetting) setting).getMinimumValue(), ((DoubleSetting) setting).getMaximumValue()));
             } else if (setting instanceof FloatSetting) {
-                container.addComponent(new NumberComponent(setting.getName(), null, theme.getComponentRenderer(), (FloatSetting) setting, ((FloatSetting) setting).getMin(), ((FloatSetting) setting).getMax()));
+                container.addComponent(new NumberComponent(setting.getName(), null, theme.getComponentRenderer(), (FloatSetting) setting, ((FloatSetting) setting).getMinimumValue(), ((FloatSetting) setting).getMaximumValue()));
             } else if (setting instanceof ModeSetting) {
                 container.addComponent(new EnumComponent(setting.getName(), null, theme.getComponentRenderer(), (ModeSetting) setting));
             } else if (setting instanceof ColourSetting) {

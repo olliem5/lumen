@@ -14,5 +14,5 @@ import java.util.Arrays;
 
 @ModuleManifest(name = "Colours", description = "Controls client colours", category = ModuleCategory.LUMEN)
 public final class Colours extends Module {
-    public final ModeSetting colourModel = registerMode("Colour Model", "RGB", Arrays.asList("RGB", "HSB"));
+    public final ModeSetting colourModel = registerMode("Colour Model", "RGB", "RGB", "HSB");
 }
