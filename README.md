@@ -2,10 +2,4 @@
 
 # Lumen
 - Minecraft 'Utility Mod' for 1.16.5 Anarchy servers.
-
-### Base Roadmap
-- [x] Module System
-- [ ] Command System
-- [ ] HUD System
-- [ ] Annotation Settings  
-- [ ] GUI
+- Highly unfinished, but still provides somewhat of a base for anyone interested.
